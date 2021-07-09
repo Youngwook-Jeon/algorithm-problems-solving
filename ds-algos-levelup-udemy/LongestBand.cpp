@@ -5,6 +5,7 @@
 #include <unordered_set>
 using namespace std;
 
+// O(N) - time complexity
 int longest_band(vector<int> arr) {
     int n = arr.size();
     unordered_set<int> s;
