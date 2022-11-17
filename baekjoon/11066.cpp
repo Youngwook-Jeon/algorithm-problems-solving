@@ -5,8 +5,7 @@
 using namespace std;
 #define MAX 987654321
 
-// table[j][i + j] := i ~ (i + j)까지의 파일들을 합치는 데 필요한 최소 비용
-// i(= i + j - j)에 대한 Mathematical Induction(DP)을 적용.
+// table[j][i + j] := j ~ (i + j)까지의 파일들을 합치는 데 필요한 최소 비용
 int table[501][501];
 int su[501], arr[501];
 
