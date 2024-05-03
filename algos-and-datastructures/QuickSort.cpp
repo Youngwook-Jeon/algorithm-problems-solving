@@ -1,46 +1,37 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int partition(int arr[], int start, int end)
 {
     int pivot = arr[start];
-    int cnt = 0;
-
-    for (int i = start + 1; i <= end; i++)
+    int l = start - 1, h = end + 1;
+    while (true)
     {
-        if (arr[i] <= pivot)
-            cnt++;
-    }
-
-    int pivotInd = start + cnt;
-    swap(arr[pivotInd], arr[start]);
-
-    int i = start, j = end;
-    while (i < pivotInd && j > pivotInd)
-    {
-        while (arr[i] <= pivot)
-            i++;
-        while (arr[j] > pivot)
-            j--;
-
-        if (i < pivotInd && j > pivotInd)
+        do
         {
-            swap(arr[i++], arr[j--]);
-        }
-    }
+            l++;
+        } while (arr[l] < pivot);
 
-    return pivotInd;
+        do
+        {
+            h--;
+        } while (arr[h] > pivot);
+        if (l >= h)
+            return h;
+        swap(arr[l], arr[h]);
+    }
 }
 
 void quickSort(int arr[], int start, int end)
 {
-    if (start >= end)
-        return;
+    if (start < end)
+    {
+        int p = partition(arr, start, end);
 
-    int p = partition(arr, start, end);
-
-    quickSort(arr, start, p - 1);
-    quickSort(arr, p + 1, end);
+        quickSort(arr, start, p);
+        quickSort(arr, p + 1, end);
+    }
 }
 
 int main()
