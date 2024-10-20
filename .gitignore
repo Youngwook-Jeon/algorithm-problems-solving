@@ -3,3 +3,4 @@
 **/*.out
 playground/
 playground.cpp
+*.txt
